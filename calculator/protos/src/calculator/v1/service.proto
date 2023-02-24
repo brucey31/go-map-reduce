@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package calculator.v1;
+
+option go_package = "gen/calculator/v1";
+
+service Calculator{
+  rpc CalculateDataPoint(CalculationInput) returns (CalculationResult) {}
+  
+}
+
+enum ItemType {
+    APPLE = 0;
+    BANANA = 1;
+    CUCUMBER = 2;
+    COURGETTE = 3;
+    CABBAGE = 4;
+    TURNIP = 5;
+    MUSHROOMS = 6;
+    KALE = 7;
+    SPINACH = 8;
+    SUEDE = 9;
+    CARROT = 10;
+    PEAS = 11;
+    CORN = 12;
+    RADDISH = 13;
+    AUGERGINE = 14;
+    ONION = 16;
+    POTATO = 17;
+    BEANS = 18;
+    AVOCADO = 19;
+    BROCCOLI = 20;
+  }
+
+message CalculationItemOutput{
+  ItemType item = 1;
+  int32 count = 2;
+}
+
+message CalculationInput {
+  repeated ItemType item = 1;
+  string basket_owner = 2;
+}
+
+message CalculationResult {
+  repeated CalculationItemOutput output = 1;
+  string basket_owner = 2;
+}
